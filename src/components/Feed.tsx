@@ -180,6 +180,7 @@ export function Feed({ series }: { series: Series[] }) {
     const v = videoRef.current;
     if (!v) return;
     const onEnded = () => {
+      if (snappingRef.current) return;
       const s = series[indexRef.current];
       if (!s) return;
       router.prefetch(`/watch/${s.id}`);
@@ -286,7 +287,7 @@ export function Feed({ series }: { series: Series[] }) {
         onBegin={player.beginSeek}
         onSeek={player.seekTo}
         onEnd={player.endSeek}
-        className="bottom-[7.35rem]"
+        className="absolute inset-x-4 bottom-[7.35rem]"
       />
 
       <PromptBar

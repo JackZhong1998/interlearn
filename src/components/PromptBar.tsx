@@ -91,6 +91,12 @@ export function PromptBar({
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              send(value);
+            }
+          }}
           placeholder={placeholder}
           enterKeyHint="send"
           className="h-10 min-w-0 flex-1 rounded-full border border-white/15 bg-black/55 px-4 text-sm text-white outline-none placeholder:text-white/40 backdrop-blur-md"

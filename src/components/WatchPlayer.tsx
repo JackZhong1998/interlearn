@@ -185,6 +185,14 @@ export function WatchPlayer({
         </div>
       ) : (
         <div data-player-ui className="absolute inset-x-0 bottom-[7.2rem] z-30 px-4">
+          <SeekBar
+            progress={player.progress}
+            duration={player.duration}
+            onBegin={player.beginSeek}
+            onSeek={player.seekTo}
+            onEnd={player.endSeek}
+            className="relative mb-2"
+          />
           <div className="mb-2 text-center text-xs text-white/70">
             在这一页选。点哪条，立刻播下一条真实教学片。
           </div>
@@ -194,9 +202,9 @@ export function WatchPlayer({
                 key={c.id}
                 type="button"
                 onClick={() => playClip(c.nextClipId)}
-                className="flex w-full items-center gap-3 rounded-2xl border border-white/20 bg-black/55 px-3 py-3 text-left backdrop-blur-md"
+                className="flex w-full items-center gap-3 rounded-2xl border border-white/20 bg-black/55 px-3 py-2.5 text-left backdrop-blur-md"
               >
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-sm font-semibold text-black">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-sm font-semibold text-black">
                   {"ABC"[i]}
                 </span>
                 <span>
@@ -209,14 +217,16 @@ export function WatchPlayer({
         </div>
       )}
 
-      <SeekBar
-        progress={player.progress}
-        duration={player.duration}
-        onBegin={player.beginSeek}
-        onSeek={player.seekTo}
-        onEnd={player.endSeek}
-        className={ended ? "bottom-[16.6rem]" : "bottom-[7.35rem]"}
-      />
+      {!ended ? (
+        <SeekBar
+          progress={player.progress}
+          duration={player.duration}
+          onBegin={player.beginSeek}
+          onSeek={player.seekTo}
+          onEnd={player.endSeek}
+          className="absolute inset-x-4 bottom-[7.35rem]"
+        />
+      ) : null}
 
       <PromptBar onSubmit={() => jumpNext()} />
 

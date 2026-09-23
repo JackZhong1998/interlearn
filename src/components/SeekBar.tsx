@@ -9,7 +9,7 @@ export function SeekBar({
   onBegin,
   onSeek,
   onEnd,
-  className = "bottom-[4.6rem]",
+  className = "absolute inset-x-4 bottom-[4.6rem]",
 }: {
   progress: number;
   duration: number;
@@ -29,7 +29,7 @@ export function SeekBar({
   }
 
   return (
-    <div data-player-ui className={`absolute inset-x-4 z-30 ${className}`}>
+    <div data-player-ui className={`z-30 ${className}`}>
       <div className="mb-1 flex justify-between text-[10px] text-white/55">
         <span>{formatTime(progress)}</span>
         <span>{formatTime(duration)}</span>
