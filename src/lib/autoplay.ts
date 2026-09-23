@@ -64,6 +64,18 @@ export function autoplay(video: HTMLVideoElement, url: string, poster?: string) 
   });
 }
 
+export function loadPaused(video: HTMLVideoElement, url?: string, poster?: string) {
+  markUserPaused(video, true);
+  video.autoplay = false;
+  video.removeAttribute("autoplay");
+  if (url && video.getAttribute("src") !== url) {
+    video.src = url;
+    if (poster) video.poster = poster;
+    video.load();
+  }
+  video.pause();
+}
+
 export function tryUnmute(video: HTMLVideoElement) {
   video.muted = false;
   void video.play().catch(() => {

@@ -12,7 +12,13 @@ const DOWN_RATE = 1.5;
 
 export function useShortPlayer(
   videoRef: React.RefObject<HTMLVideoElement | null>,
-  opts: { onSeriesSwipe?: (dir: 1 | -1) => void } = {},
+  opts: {
+    attachKey?: number;
+    autoResume?: boolean;
+    onSeriesDrag?: (dy: number) => void;
+    onSeriesRelease?: (dy: number) => boolean;
+    onSeriesSwipe?: (dir: 1 | -1) => void;
+  } = {},
 ) {
   const [paused, setPaused] = useState(false);
   const [rate, setRate] = useState(1);
@@ -29,7 +35,12 @@ export function useShortPlayer(
   const mode = useRef<"idle" | "pending" | "hold">("idle");
   const swipedRate = useRef(false);
   const seeking = useRef(false);
+  const dragRef = useRef(opts.onSeriesDrag);
+  const releaseRef = useRef(opts.onSeriesRelease);
   const seriesCb = useRef(opts.onSeriesSwipe);
+  const autoResume = opts.autoResume !== false;
+  dragRef.current = opts.onSeriesDrag;
+  releaseRef.current = opts.onSeriesRelease;
   seriesCb.current = opts.onSeriesSwipe;
 
   const applyRate = useCallback((next: number, lock: boolean) => {
@@ -54,23 +65,31 @@ export function useShortPlayer(
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    const onTime = () => {
+    let raf = 0;
+    const publish = () => {
+      raf = 0;
       setProgress(v.currentTime);
       setDuration(v.duration || 0);
       setPaused(v.paused);
+    };
+    const onTime = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(publish);
     };
     const onMeta = () => setDuration(v.duration || 0);
     v.addEventListener("timeupdate", onTime);
     v.addEventListener("durationchange", onMeta);
     v.addEventListener("play", onTime);
     v.addEventListener("pause", onTime);
+    publish();
     return () => {
+      if (raf) cancelAnimationFrame(raf);
       v.removeEventListener("timeupdate", onTime);
       v.removeEventListener("durationchange", onMeta);
       v.removeEventListener("play", onTime);
       v.removeEventListener("pause", onTime);
     };
-  });
+  }, [opts.attachKey, videoRef]);
 
   const togglePause = useCallback(() => {
     const v = videoRef.current;
@@ -121,12 +140,20 @@ export function useShortPlayer(
     (e: React.PointerEvent) => {
       if (mode.current === "idle") return;
       const dy = e.clientY - start.current.y;
-      if (mode.current === "pending" && Math.abs(dy) >= SERIES_PX) {
-        window.clearTimeout(holdTimer.current);
-        mode.current = "idle";
-        setHolding(false);
-        const dir = dy > 0 ? -1 : 1;
-        seriesCb.current?.(dir);
+      if (mode.current === "pending") {
+        if (Math.abs(dy) >= 12) {
+          window.clearTimeout(holdTimer.current);
+        }
+        if (dragRef.current) {
+          dragRef.current(dy);
+          return;
+        }
+        if (Math.abs(dy) >= SERIES_PX) {
+          window.clearTimeout(holdTimer.current);
+          mode.current = "idle";
+          setHolding(false);
+          seriesCb.current?.(dy > 0 ? -1 : 1);
+        }
         return;
       }
       if (mode.current === "hold" && Math.abs(dy) >= RATE_PX) {
@@ -147,6 +174,7 @@ export function useShortPlayer(
       if (was === "pending") {
         const dx = e.clientX - start.current.x;
         const dy = e.clientY - start.current.y;
+        if (releaseRef.current?.(dy)) return;
         if (Math.hypot(dx, dy) < 14) togglePause();
         return;
       }
@@ -182,17 +210,22 @@ export function useShortPlayer(
 
   const onUnexpectedPause = useCallback(
     (e: React.SyntheticEvent<HTMLVideoElement>) => {
+      if (!autoResume) return;
       const v = e.currentTarget;
       if (v.ended || isUserPaused(v) || seeking.current) return;
       void v.play().catch(() => undefined);
     },
-    [],
+    [autoResume],
   );
 
-  const onCanPlay = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
-    const v = e.currentTarget;
-    if (v.paused && !isUserPaused(v) && !v.ended) void v.play().catch(() => undefined);
-  }, []);
+  const onCanPlay = useCallback(
+    (e: React.SyntheticEvent<HTMLVideoElement>) => {
+      if (!autoResume) return;
+      const v = e.currentTarget;
+      if (v.paused && !isUserPaused(v) && !v.ended) void v.play().catch(() => undefined);
+    },
+    [autoResume],
+  );
 
   return {
     paused,
