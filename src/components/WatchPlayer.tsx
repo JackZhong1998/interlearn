@@ -179,7 +179,7 @@ export function WatchPlayer({
       </button>
 
       {!ended ? (
-        <div className="pointer-events-none absolute inset-x-0 bottom-[8.6rem] z-20 px-5">
+        <div className="pointer-events-none absolute inset-x-0 bottom-[5.8rem] z-20 px-5">
           <div className="mt-1 text-xl font-semibold">{clip?.title}</div>
           <p className="mt-1 line-clamp-3 text-sm text-white/75">{clip?.script}</p>
         </div>
@@ -224,11 +224,13 @@ export function WatchPlayer({
           onBegin={player.beginSeek}
           onSeek={player.seekTo}
           onEnd={player.endSeek}
-          className="absolute inset-x-4 bottom-[7.35rem]"
+          className="absolute inset-x-4 bottom-[4.55rem]"
         />
       ) : null}
 
-      <PromptBar onSubmit={() => jumpNext()} />
+      {ended && (clip?.choices?.length ?? 0) > 0 ? (
+        <PromptBar onSubmit={() => jumpNext()} />
+      ) : null}
 
       {toast ? (
         <div className="absolute left-1/2 top-24 z-40 -translate-x-1/2 rounded-full bg-white px-3 py-1.5 text-xs text-black">

@@ -15,7 +15,6 @@ import {
   setActiveSlot,
 } from "@/lib/video-pool";
 import { PauseFlash, SeekBar, SpeedBadge } from "./SeekBar";
-import { PromptBar } from "./PromptBar";
 
 const SNAP_MS = 220;
 
@@ -274,7 +273,7 @@ export function Feed({ series }: { series: Series[] }) {
         {muted ? "声音关" : "声音开"}
       </button>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-[8.6rem] z-20 px-5">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[5.8rem] z-20 px-5">
         <div className="text-xl font-semibold">{start?.title || current?.title}</div>
         <p className="mt-1 line-clamp-2 text-sm text-white/75">
           {start?.script || current?.subtitle}
@@ -287,14 +286,7 @@ export function Feed({ series }: { series: Series[] }) {
         onBegin={player.beginSeek}
         onSeek={player.seekTo}
         onEnd={player.endSeek}
-        className="absolute inset-x-4 bottom-[7.35rem]"
-      />
-
-      <PromptBar
-        onSubmit={() => {
-          const next = indexRef.current + 1;
-          commit(next < series.length ? next : 0);
-        }}
+        className="absolute inset-x-4 bottom-[4.55rem]"
       />
     </div>
   );

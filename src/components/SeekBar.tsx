@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { formatTime } from "@/lib/use-short-player";
 
 export function SeekBar({
@@ -19,6 +19,7 @@ export function SeekBar({
   className?: string;
 }) {
   const bar = useRef<HTMLDivElement>(null);
+  const [scrubbing, setScrubbing] = useState(false);
   const ratio = duration > 0 ? Math.min(1, Math.max(0, progress / duration)) : 0;
 
   function at(clientX: number) {
@@ -30,16 +31,19 @@ export function SeekBar({
 
   return (
     <div data-player-ui className={`z-30 ${className}`}>
-      <div className="mb-1 flex justify-between text-[10px] text-white/55">
-        <span>{formatTime(progress)}</span>
-        <span>{formatTime(duration)}</span>
-      </div>
+      {scrubbing ? (
+        <div className="mb-1 flex justify-between text-[10px] text-white/70">
+          <span>{formatTime(progress)}</span>
+          <span>{formatTime(duration)}</span>
+        </div>
+      ) : null}
       <div
         ref={bar}
         className="h-5 cursor-pointer touch-none"
         onPointerDown={(e) => {
           e.stopPropagation();
           e.currentTarget.setPointerCapture(e.pointerId);
+          setScrubbing(true);
           onBegin();
           onSeek(at(e.clientX));
         }}
@@ -50,6 +54,11 @@ export function SeekBar({
         }}
         onPointerUp={(e) => {
           e.stopPropagation();
+          setScrubbing(false);
+          onEnd();
+        }}
+        onPointerCancel={() => {
+          setScrubbing(false);
           onEnd();
         }}
       >
