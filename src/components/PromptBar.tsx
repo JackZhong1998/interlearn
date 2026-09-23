@@ -80,7 +80,7 @@ export function PromptBar({
   }
 
   return (
-    <div data-player-ui className="absolute inset-x-3 bottom-[3.7rem] z-[35]">
+    <div data-player-ui className="absolute inset-x-3 bottom-[3.85rem] z-50">
       <form
         className="flex items-center gap-2"
         onSubmit={(e) => {
@@ -92,15 +92,20 @@ export function PromptBar({
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              send(value);
-            }
+            if (e.key !== "Enter") return;
+            if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+            e.preventDefault();
+            send(value);
           }}
           placeholder={placeholder}
           enterKeyHint="send"
+          autoComplete="off"
+          name="prompt"
           className="h-10 min-w-0 flex-1 rounded-full border border-white/15 bg-black/55 px-4 text-sm text-white outline-none placeholder:text-white/40 backdrop-blur-md"
         />
+        <button type="submit" className="sr-only">
+          下一条
+        </button>
         <button
           type="button"
           aria-label="语音输入"

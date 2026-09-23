@@ -13,7 +13,7 @@ export function TabBar() {
   const pathname = usePathname();
   return (
     <nav className="pointer-events-none absolute inset-x-0 bottom-0 z-40">
-      <div className="pointer-events-auto mx-auto flex max-w-[430px] items-end justify-around bg-gradient-to-t from-black/90 via-black/70 to-transparent px-4 pb-[max(10px,env(safe-area-inset-bottom))] pt-6">
+      <div className="mx-auto flex max-w-[430px] items-end justify-around bg-gradient-to-t from-black/90 via-black/70 to-transparent px-4 pb-[max(10px,env(safe-area-inset-bottom))] pt-6">
         {TABS.map((tab) => {
           const active =
             tab.href === "/"
@@ -24,7 +24,7 @@ export function TabBar() {
             <Link
               key={tab.href}
               href={tab.href}
-              className={`flex w-20 flex-col items-center gap-0.5 py-1 text-[11px] ${
+              className={`pointer-events-auto flex w-20 flex-col items-center gap-0.5 py-1 text-[11px] ${
                 active ? "text-white" : "text-white/45"
               }`}
             >
