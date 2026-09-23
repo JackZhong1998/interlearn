@@ -1,0 +1,5 @@
+机器怎么分工
+一台机器要同时办很多事，不能只靠一条流水线。先看它怎么把工作拆开。看完选一条，继续拆计算是怎么发生的。
+
+License: Public Domain
+Source: All About Polymorphics (1959), Thompson Ramo Wooldridge. Internet Archive. https://archive.org/details/AllAboutPolymorphics

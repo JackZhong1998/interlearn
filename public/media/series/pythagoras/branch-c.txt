@@ -1,0 +1,5 @@
+公式从图形里出来
+a² + b² = c² 不是先写在纸上的咒语。它是正方形面积说完以后，留下的那一行。
+
+License: NASA / Project Mathematics! (Caltech)
+Source: Project Mathematics!: Theorem of Pythagoras (1988).

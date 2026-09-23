@@ -1,0 +1,5 @@
+两颗太阳的行星
+开普勒找到绕两颗恒星走的行星。轨道不再是小学课本里的一个圆。
+
+License: Public domain (NASA)
+Source: Circling Two Suns, NASA/GSFC. https://commons.wikimedia.org/wiki/File:Circling_Two_Suns.ogv

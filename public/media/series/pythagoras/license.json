@@ -1,0 +1,30 @@
+[
+  {
+    "id": "start",
+    "title": "直角上的面积",
+    "license": "NASA / Project Mathematics! (Caltech), U.S. government educational release; see Archive.org item.",
+    "source": "Project Mathematics!: Theorem of Pythagoras (1988). https://archive.org/details/theorem_of_pythagoras",
+    "url": "https://archive.org/download/theorem_of_pythagoras/theorem_of_pythagoras_512kb.mp4"
+  },
+  {
+    "id": "branch-a",
+    "title": "用面积去证",
+    "license": "NASA / Project Mathematics! (Caltech)",
+    "source": "Project Mathematics!: Theorem of Pythagoras (1988).",
+    "url": "https://archive.org/download/theorem_of_pythagoras/theorem_of_pythagoras_512kb.mp4"
+  },
+  {
+    "id": "branch-b",
+    "title": "换一种拼接",
+    "license": "NASA / Project Mathematics! (Caltech)",
+    "source": "Project Mathematics!: Theorem of Pythagoras (1988).",
+    "url": "https://archive.org/download/theorem_of_pythagoras/theorem_of_pythagoras_512kb.mp4"
+  },
+  {
+    "id": "branch-c",
+    "title": "公式从图形里出来",
+    "license": "NASA / Project Mathematics! (Caltech)",
+    "source": "Project Mathematics!: Theorem of Pythagoras (1988).",
+    "url": "https://archive.org/download/theorem_of_pythagoras/theorem_of_pythagoras_512kb.mp4"
+  }
+]

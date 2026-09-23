@@ -1,0 +1,5 @@
+用面积去证
+把三个正方形摆在直角三角形上。面积在动，等式就从图形里长出来，不必先背公式。
+
+License: NASA / Project Mathematics! (Caltech)
+Source: Project Mathematics!: Theorem of Pythagoras (1988).

@@ -1,0 +1,5 @@
+换一种拼接
+同样的块，另一种拼法。证明往往不是一条路，是同一件事实的多种摆法。
+
+License: NASA / Project Mathematics! (Caltech)
+Source: Project Mathematics!: Theorem of Pythagoras (1988).

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "start",
+    "title": "地球是行星吗",
+    "license": "Public Domain Mark 1.0 (NET)",
+    "source": "Of Science and Scientists 04, WGBH / Harvard / NET (1957). https://archive.org/details/of-science-and-scientists",
+    "url": "https://archive.org/download/of-science-and-scientists/Of%20Science%20And%20Scientists%2004%20Is%20The%20Earth%20A%20Planet.mp4"
+  },
+  {
+    "id": "branch-a",
+    "title": "新物理怎么出生",
+    "license": "Public Domain Mark 1.0 (NET)",
+    "source": "Of Science and Scientists 05, WGBH / Harvard / NET (1957).",
+    "url": "https://archive.org/download/of-science-and-scientists/Of%20Science%20And%20Scientists%2005%20Birth%20Of%20A%20New%20Physics.mp4"
+  },
+  {
+    "id": "branch-b",
+    "title": "原子看得见吗",
+    "license": "Public Domain Mark 1.0 (NET)",
+    "source": "Of Science and Scientists 16, WGBH / Harvard / NET (1957).",
+    "url": "https://archive.org/download/of-science-and-scientists/Of%20Science%20And%20Scientists%2016%20Are%20Atoms%20Real.mp4"
+  },
+  {
+    "id": "branch-c",
+    "title": "科学为什么管用",
+    "license": "Public Domain Mark 1.0 (NET)",
+    "source": "Of Science and Scientists 22, WGBH / Harvard / NET (1957).",
+    "url": "https://archive.org/download/of-science-and-scientists/Of%20Science%20And%20Scientists%2022%20Why%20Science%20Works.mp4"
+  }
+]

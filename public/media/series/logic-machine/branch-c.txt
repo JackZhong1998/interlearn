@@ -1,0 +1,5 @@
+为什么这像后来的网络
+把许多处理单元连起来，就接近一张可扩展的网。今天的大模型训练，走的还是这条分工和通信的老路。
+
+License: Public Domain
+Source: All About Polymorphics (1959), Internet Archive.

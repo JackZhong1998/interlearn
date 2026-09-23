@@ -1,0 +1,5 @@
+单元之间怎么通信
+拆开还不够，单元必须能把中间结果递出去。没有通道，并行只是一堆孤立的计算器。
+
+License: Public Domain
+Source: All About Polymorphics (1959), Internet Archive.

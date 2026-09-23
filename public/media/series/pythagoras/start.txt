@@ -1,0 +1,5 @@
+直角上的面积
+斜边上的正方形，为什么等于两条直角边上的正方形之和？先看几何，再选一种证明走法。
+
+License: NASA / Project Mathematics! (Caltech), U.S. government educational release; see Archive.org item.
+Source: Project Mathematics!: Theorem of Pythagoras (1988). https://archive.org/details/theorem_of_pythagoras

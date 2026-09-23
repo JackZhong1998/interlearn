@@ -1,0 +1,5 @@
+π 是一种比
+圆周和直径为什么总是同一个比？先把 π 看成测量，而不是符号。看完选一条往下量。
+
+License: Public Domain Mark 1.0
+Source: Meaning of Pi (1949), Coronet Instructional Films. https://archive.org/details/MeaningOfPi

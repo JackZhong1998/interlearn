@@ -1,0 +1,5 @@
+并行而不是排队
+同一份活可以分给许多单元一起做。这就是后来网络和并行计算的直觉：不是更快的一个人，是更多人同时算。
+
+License: Public Domain
+Source: All About Polymorphics (1959), Internet Archive.

@@ -1,0 +1,5 @@
+自己验一次 π
+量周长、量直径，相除。误差会在，但比会靠近同一个数。数学结论要经得起动手。
+
+License: Public Domain Mark 1.0
+Source: Meaning of Pi (1949), Coronet Instructional Films.

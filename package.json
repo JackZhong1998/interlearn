@@ -1,0 +1,28 @@
+{
+  "name": "interlearn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "export": "bash scripts/export-pages.sh"
+  },
+  "dependencies": {
+    "@fal-ai/client": "^1.6.2",
+    "@fal-ai/server-proxy": "^1.1.1",
+    "next": "^15.2.4",
+    "openai": "^4.89.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2"
+  }
+}

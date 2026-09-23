@@ -1,0 +1,5 @@
+为什么需要这个数
+没有这个比，圆上的长度就写不进计算。π 不是装饰，是把弯曲变成可算。
+
+License: Public Domain Mark 1.0
+Source: Meaning of Pi (1949), Coronet Instructional Films.
